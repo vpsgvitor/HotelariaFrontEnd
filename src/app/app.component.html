@@ -1,0 +1,10 @@
+<ul class="nav " style="background-color: #00c79b">
+  <div class="container" style="padding-left:0;">
+    <li class="nav-item ">
+      <a class="nav-link active text-white" href="#"><img src="assets/img/logo-senior.png" ></a>
+    </li>
+  </div>
+</ul>
+<app-criador-pessoa (atualizaPessoas)="ngOnInit()"></app-criador-pessoa>
+<app-criador-check-in [options]="options" (novaPessoa)="criarCheckIn($event)"></app-criador-check-in>
+<app-consultas [checkIns]="checkIns"></app-consultas>

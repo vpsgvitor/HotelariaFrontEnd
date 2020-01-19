@@ -1,0 +1,39 @@
+<div class="container my-3">
+  <div class="card">
+    <div class="card-header corSenior text-white">
+      Consultas
+    </div>
+    <div class="card-body">
+      <Label>Filtrar por:</Label>
+      <div class="row mt-2">
+        <div class="ml-3">
+          <input type="radio" name="filtro" class="form-check-label" [(ngModel)]="filtro" value="1">
+          <label class="ml-2">Pessoas ainda presentes</label>
+        </div>
+        <div class="ml-4">
+          <input type="radio" name="filtro" class="form-check-label" [(ngModel)]="filtro" value="2">
+          <label class="ml-2">Pessoas que já deixaram o hotel</label>
+        </div>
+      </div>
+      <div class="my-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Documento</th>
+              <th scope="col">Valor gasto (R$)</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let checkIn of getCheckIns | paginate: { itemsPerPage: 3, currentPage: p }">
+               <td>{{ checkIn.hospede.nome }}</td>
+               <td>{{ checkIn.hospede.documento }}</td>
+               <td>{{ calculaValor(checkIn) }}</td>
+             </tr>
+          </tbody>
+        </table>
+		    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

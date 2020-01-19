@@ -1,0 +1,46 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header corSenior text-white">
+      Novo check in
+    </div>
+    <div class="card-body">
+      <form method="post" #frmCheckIn="ngForm" (ngSubmit)="criarCheckIn(frmCheckIn)">
+        <div class="row">
+          <div class="col">
+             <Label>Data/Hora de entrada</Label>
+             <input type="datetime-local" class="form-control" name="dataEntrada"
+             [(ngModel)]="checkIn.dataEntrada" required />
+          </div>
+          <div class="col">
+            <Label>Data/Hora de saída</Label>
+            <input type="datetime-local" class="form-control" name="dataSaida"
+            [(ngModel)]="checkIn.dataSaida" required />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <Label>Pessoa</Label>
+            <input type="text" [formControl]="myControl" [matAutocomplete]="auto" class="form-control" [(ngModel)]="checkIn.hospede" require>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.nome}}
+              </mat-option>
+            </mat-autocomplete>
+          </div>
+          <div class="col">
+            <div class="form-group pt-3">
+              <div class="form-check mt-4">
+                <input class="form-check-input mt-2" type="checkbox"
+                [(ngModel)]="checkIn.adicionalVeiculo" name="adicionalVeiculo" >
+                <label class="form-check-label" for="gridCheck">
+                  Possui veículo
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn corSenior mt-3 text-white" [disabled]="frmCheckIn.invalid || checkIn.hospede == null">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
