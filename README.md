@@ -9,7 +9,7 @@
   `npm install`
   `npm start`
   
-  Assim que compilar o servidor estará rodando no endereço `http://localhost:4200/`
+  Assim que compilar o servidor estará rodando no endereço `http://localhost:4200/` e buscará os dados no endereço `http://localhost:8080/`
   
 
 ## BackEnd
